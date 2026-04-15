@@ -1,93 +1,51 @@
-# ReservaDB — Sistema Distribuido de Gestión de Espacios Compartidos
+# BD2_1S26_Proyectos_202201336
 
-**Curso:** Sistemas de Bases de Datos 2  
-**Universidad:** San Carlos de Guatemala — Facultad de Ingeniería  
-**Carnet:** 202201336  
+Repositorio de entregas del curso **Sistemas de Bases de Datos 2**.
 
----
+- Universidad de San Carlos de Guatemala
+- Facultad de Ingenieria
+- Carnet: 202201336
 
-## Descripción
-
-Sistema de gestión de reservas de espacios compartidos (coworking) implementado en Apache Cassandra. Diseñado con el principio de Query-Driven Modeling para garantizar baja latencia, alta disponibilidad y escalabilidad horizontal.
-
----
-
-## Tecnologías utilizadas
-
-- Apache Cassandra 4.1 (3 nodos en Docker)
-- Python 3.11
-- cassandra-driver, faker
-- Docker Desktop
-
----
-
-## Estructura del repositorio
-```
+## Estructura general
+```text
 BD2_1S26_Proyectos_202201336/
-└── Primer Proyecto/
-    ├── scripts/
-    │   ├── ddl.cql              # Definicion de keyspace y tablas
-    │   ├── consultas.cql        # Consultas CQL del negocio
-    │   ├── cargar_datos.py      # Script carga masiva 100,000 reservas
-    │   └── pruebas_fallos.py    # Script pruebas tolerancia a fallos
+├── PrimerProyecto/
+│   ├── Consultas/
+│   ├── docs/
+│   └── scripts/
+└── SegundoProyecto/
+    ├── consultas/
+    ├── data/csv/
     ├── docs/
-    │   ├── Documentacion_Tecnica.pdf
-    │   └── Manual_Usuario.pdf
+    ├── scripts/
     └── README.md
 ```
 
----
+## Proyectos
 
-## Configuración del clúster
+### 1) PrimerProyecto
+Implementacion orientada a Apache Cassandra (modelo distribuido y consultas por requerimiento de negocio).
 
-| Parámetro | Valor |
-|---|---|
-| Nodos | 3 |
-| Replication Factor | 3 |
-| Estrategia | SimpleStrategy |
-| Consistency Level | QUORUM |
+Archivos principales:
+- `PrimerProyecto/scripts/ddl.cql`
+- `PrimerProyecto/scripts/cargar_datos.py`
+- `PrimerProyecto/scripts/pruebas_fallos.py`
+- `PrimerProyecto/docs/Documentacion_Tecnica.md`
+- `PrimerProyecto/docs/Manual_Usuario.md`
 
----
+### 2) SegundoProyecto
+Sistema de recomendacion de peliculas usando Neo4j (modelo de grafos, carga masiva y analisis de red).
 
-## Tablas y queries soportadas
+Punto de entrada:
+- `SegundoProyecto/README.md`
 
-| Tabla | Query soportada |
-|---|---|
-| `usuarios` | Datos maestros de usuarios |
-| `espacios` | Datos maestros de espacios |
-| `reservas_por_espacio_fecha` | Q1: Disponibilidad por espacio y fecha |
-| `reservas_por_usuario` | Q2: Historial de reservas por usuario |
-| `reservas_por_fecha` | Q3: Ocupación por rango de fechas |
+Documentos clave:
+- `SegundoProyecto/docs/Documentacion_Tecnica.md`
+- `SegundoProyecto/docs/Manual_Usuario.md`
+- `SegundoProyecto/docs/Mockups_Disenos.md`
+- `SegundoProyecto/docs/Plantilla_Evidencias.md`
+- `SegundoProyecto/docs/Guia_Explicacion_Proyecto.md`
 
----
-
-## Instrucciones de instalación
-
-Ver `docs/Manual_Usuario.pdf` para guía completa paso a paso.
-
-### Inicio rápido
-```bash
-# 1. Crear red Docker
-docker network create cassandra-net
-
-# 2. Levantar nodos
-docker run -d --name cassandra-node1 --network cassandra-net -e CASSANDRA_CLUSTER_NAME=ReservaDB -e CASSANDRA_ENDPOINT_SNITCH=SimpleSnitch -p 9042:9042 cassandra:4.1
-docker run -d --name cassandra-node2 --network cassandra-net -e CASSANDRA_CLUSTER_NAME=ReservaDB -e CASSANDRA_SEEDS=cassandra-node1 -e CASSANDRA_ENDPOINT_SNITCH=SimpleSnitch cassandra:4.1
-docker run -d --name cassandra-node3 --network cassandra-net -e CASSANDRA_CLUSTER_NAME=ReservaDB -e CASSANDRA_SEEDS=cassandra-node1 -e CASSANDRA_ENDPOINT_SNITCH=SimpleSnitch cassandra:4.1
-
-# 3. Verificar cluster
-docker exec -it cassandra-node1 nodetool status
-
-# 4. Cargar datos
-py -3.11 cargar_datos.py
-```
-
----
-
-## Pruebas de tolerancia a fallos
-
-| Consistency Level | 3 nodos activos | 1 nodo caído |
-|---|---|---|
-| ONE | 191.08 ms ✅ | 19.15 ms ✅ |
-| QUORUM | 380.53 ms ✅ | 29.32 ms ✅ |
-| ALL | 67.25 ms ✅ | ❌ Error |
+## Notas de uso
+- Cada proyecto es independiente y tiene sus propios scripts y documentacion.
+- Para ejecutar el SegundoProyecto, sigue el flujo descrito en `SegundoProyecto/README.md`.
