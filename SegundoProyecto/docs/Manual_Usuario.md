@@ -129,84 +129,7 @@ Descripcion: distribucion de grados de separacion en la red de amistades.
 
 
 
-## 4. Guia profesional de capturas
-### 4.1 Herramienta de captura
-- Usar `Win + Shift + S`.
-- Tipo recomendado: recorte rectangular.
-- Incluir siempre consulta y resultado en la misma imagen cuando sea posible.
-
-### 4.2 Ubicacion para guardar capturas
-Guardar todas las evidencias en:
-- `docs/evidencias/capturas/`
-
-### 4.3 Capturas obligatorias y significado
-1. `01_instancia_running.png`
-Descripcion: instancia Neo4j en RUNNING.
-Significado: confirma entorno activo.
-
-2. `02_import_csv.png`
-Descripcion: carpeta `import` con CSV visibles.
-Significado: confirma disponibilidad de insumos para `LOAD CSV`.
-
-3. `03_query_conectado.png`
-Descripcion: Neo4j Query conectado a la base `neo4j`.
-Significado: confirma sesion lista para ejecutar Cypher.
-
-4. `05_schema_ok.png`
-Descripcion: ejecucion de `01_schema.cypher` con salida sin error.
-Significado: confirma constraints e indices creados.
-
-5. `06_load_csv_ok.png`
-Descripcion: ejecucion de `02_load_data.cypher` finalizada.
-Significado: confirma carga de nodos y relaciones.
-
-6. `07_conteos_finales.png`
-Descripcion: resultados de conteos de Usuario/Pelicula/Actor/Director/Genero.
-Significado: confirma cumplimiento de volumen minimo.
-
-7. `08_q1.png`
-Descripcion: consulta Q1 y resultado.
-Significado: valida peliculas con puntuacion > 4 para usuario fijo.
-
-8. `09_q2.png`
-Descripcion: consulta Q2 y resultado.
-Significado: valida peliculas vistas por amigos no vistas por el usuario.
-
-9. `10_q3.png`
-Descripcion: consulta Q3 y resultado.
-Significado: valida promedio de calificaciones de una pelicula.
-
-10. `10_q4.png`
-Descripcion: consulta Q4 y resultado.
-Significado: valida generos favoritos por historial de calificacion.
-
-11. `11_q5.png`
-Descripcion: consulta Q5 con ruta (grafo y/o tabla).
-Significado: valida ruta mas corta de amistad.
-
-12. `12_q6.png`
-Descripcion: consulta Q6 y ranking.
-Significado: valida peliculas mas populares por genero.
-
-13. `13_q7.png`
-Descripcion: consulta Q7 y resultado.
-Significado: valida actores por director y pelicula.
-
-14. `14_q8_recomendacion.png`
-Descripcion: consulta Q8 y top resultados.
-Significado: valida recomendacion por amigos y gustos.
-
-15. `16_analisis_grados.png`
-Descripcion: Analysis 1 y distribucion de grados.
-Significado: evidencia analisis de red de separacion social.
-
-## 5. Buenas practicas de evidencia
-- Mantener visible el comentario `// Qx` de cada consulta en la captura.
-- Si resultado es largo, tomar una segunda captura solo de resultados.
-- No recortar columnas clave (IDs, metricas, promedios).
-- Usar nombres de archivo exactos para trazabilidad.
-
-## 6. Seccion de galeria final en el informe
+## 4. Seccion de galeria final en el informe
 Al exportar a PDF, mantener esta secuencia visual:
 1. Configuracion y preparacion (E01-E03).
 2. Implementacion fisica y validacion (E05-E07).
@@ -214,7 +137,7 @@ Al exportar a PDF, mantener esta secuencia visual:
 4. Consultas complementarias y recomendacion (E14-E15).
 5. Analisis de red (E16).
 
-## 7. Solucion de problemas frecuente
+## 5. Solucion de problemas frecuente
 - Error `Couldn't load the external resource`:
   - Verificar que el CSV exista en `import` y con el mismo nombre.
   - Verificar permisos de lectura de la carpeta.
