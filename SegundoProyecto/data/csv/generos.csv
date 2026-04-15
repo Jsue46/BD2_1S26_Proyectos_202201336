@@ -1,0 +1,16 @@
+genero_id,nombre,descripcion
+1,Action,Genre category: Action
+2,Adventure,Genre category: Adventure
+3,Comedy,Genre category: Comedy
+4,Crime,Genre category: Crime
+5,Drama,Genre category: Drama
+6,Fantasy,Genre category: Fantasy
+7,Horror,Genre category: Horror
+8,Mystery,Genre category: Mystery
+9,Romance,Genre category: Romance
+10,SciFi,Genre category: SciFi
+11,Thriller,Genre category: Thriller
+12,Animation,Genre category: Animation
+13,Documentary,Genre category: Documentary
+14,Family,Genre category: Family
+15,War,Genre category: War
