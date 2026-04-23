@@ -57,7 +57,10 @@ MATCH (g:Genero) RETURN count(g) AS generos;
 Interpretacion:
 - Los resultados de conteo evidencian que el volumen de datos cargado cumple con los minimos exigidos por el enunciado (500 usuarios, 200 peliculas, 100 actores, 50 directores y 15 generos). Esto confirma que la base esta preparada para ejecutar consultas de negocio y analisis de red sobre un conjunto representativo.
 
-## 5. Evidencia de consultas obligatorias
+## 5. Evidencia de consultas de negocio (obligatorias + adicionales)
+Consultas obligatorias segun rubrica: Q1, Q2, Q4, Q5, Q7 y Q8.
+Consultas adicionales implementadas: Q3 y Q6.
+
 ### E08 - Q1 Peliculas calificadas > 4
 Significado: valida preferencia positiva por puntuacion alta.
 
@@ -90,7 +93,7 @@ ORDER BY p.titulo;
 Interpretacion:
 - El resultado muestra contenido consumido por la red social inmediata del usuario que aun no aparece en su historial de visualizacion. Esta salida valida el enfoque de recomendacion social basado en amistades y reduce recomendaciones redundantes.
 
-### E10 - Q3 Promedio de calificaciones de pelicula
+### E10 - Q3 Promedio de calificaciones de pelicula (adicional)
 Significado: valida metrica agregada de valoracion por contenido.
 
 Query usada:
@@ -134,7 +137,7 @@ RETURN p, length(p) AS grados_separacion;
 Interpretacion:
 - La consulta confirma que existe conectividad entre los usuarios evaluados y calcula sus grados de separacion mediante `shortestPath`. Este resultado valida el uso de grafos para medir proximidad social y soportar recomendaciones por cercania en la red.
 
-### E13 - Q6 Peliculas mas populares por genero
+### E13 - Q6 Peliculas mas populares por genero (adicional)
 Significado: valida tendencia por volumen de visualizaciones.
 
 Query usada:
@@ -150,7 +153,7 @@ LIMIT 20;
 Interpretacion:
 - El ranking obtenido refleja las peliculas con mayor volumen de visualizaciones dentro del genero consultado. Esta informacion es util para detectar tendencias de consumo y priorizar sugerencias populares por categoria.
 
-## 6. Evidencia de consultas complementarias
+## 6. Evidencia de consultas obligatorias restantes (rubrica)
 ### E14 - Q7 Actores por director
 Significado: valida traversal entre direccion y reparto.
 
@@ -176,15 +179,23 @@ Significado: cuantifica conectividad social de la red.
 Interpretacion:
 - La distribucion de grados muestra el nivel de conectividad global de la red de amistades y permite identificar cuan separadas o cercanas estan las personas en la plataforma. Esta metrica confirma que la estructura social es explotable para recomendaciones transitivas.
 
-## 8. Checklist de rubrica
-- [ ] Modelo de grafo completo
-- [ ] Base Neo4j funcional
-- [ ] Carga masiva con minimos requeridos
-- [ ] Consultas obligatorias implementadas
-- [ ] Analisis de red implementados
-- [ ] Documentacion tecnica completa
-- [ ] Manual de usuario completo
-- [ ] Codigo fuente organizado
+## 8. Evidencia de instancia real del grafo para Mockups
+### E17 - Instancia real visual del grafo (vista Graph)
+Significado: cumple el requisito de mostrar ejemplos de instancias del grafo con datos reales en formato visual de nodos y relaciones.
+
+Query usada:
+```cypher
+MATCH p = (u:Usuario {user_id: 1})-[:ES_AMIGO_DE]-(amigo:Usuario)-[:VIO]->(pel:Pelicula)
+RETURN p
+LIMIT 30;
+```
+
+Captura sugerida:
+![E17 Instancia real del grafo](evidencias/capturas/17_instancia_grafo_real.png)
+
+Interpretacion:
+- La visualizacion confirma que el modelo no solo devuelve tablas, sino tambien estructura conectada real entre usuarios, amistades y consumo de peliculas.
+
 
 ## 9. Conclusiones finales
 - Ventajas observadas al usar Neo4j: Neo4j permite modelar relaciones complejas de forma natural y consultar recorridos multihop con expresividad y buen desempeno. Consultas como rutas cortas, recomendaciones por red social y analisis de conectividad se implementan de manera directa y legible en Cypher.

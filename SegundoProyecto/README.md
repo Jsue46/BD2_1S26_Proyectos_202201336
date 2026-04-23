@@ -49,8 +49,8 @@ Conteos esperados:
 ## Cobertura del enunciado
 - Nodos: `Usuario`, `Pelicula`, `Genero`, `Actor`, `Director`.
 - Relaciones: `CALIFICO`, `VIO`, `ES_AMIGO_DE`, `PERTENECE_A`, `ACTUO_EN`, `DIRIGIO`, `LE_GUSTA`.
-- Consultas de negocio obligatorias implementadas (Q1-Q6).
-- Consultas adicionales: Q7, Q8 y analisis de red.
+- Consultas obligatorias de rubrica implementadas: Q1, Q2, Q4, Q5, Q7 y Q8.
+- Consultas adicionales implementadas: Q3 (promedio de calificaciones), Q6 (populares por genero), analisis de red y validaciones de integridad.
 
 ## Entregables en `docs/`
 - Documentacion tecnica

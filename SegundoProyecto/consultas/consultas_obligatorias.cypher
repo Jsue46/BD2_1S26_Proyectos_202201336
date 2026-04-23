@@ -7,6 +7,8 @@
 // generoNombre = 'Action'
 // peliculaId = 5
 // directorId = 7
+// Consultas obligatorias segun rubrica: Q1, Q2, Q4, Q5, Q7, Q8.
+// Consultas adicionales implementadas: Q3 y Q6.
 
 // Q1: Movies rated by a user with score > 4
 MATCH (u:Usuario {user_id: 1})-[r:CALIFICO]->(p:Pelicula)

@@ -41,8 +41,9 @@ LIMIT 30;
 ```
 
 Captura requerida:
-- Archivo sugerido: usar la evidencia ya disponible de analisis social en `docs/evidencias/capturas/16_analisis_grados.png`.
+- Archivo sugerido: `docs/evidencias/capturas/17_instancia_grafo_real.png`.
 - Debe verse: nodos `Usuario` conectados por `ES_AMIGO_DE` y nodos `Pelicula` conectados por `VIO`.
+- Importante: esta evidencia debe tomarse en vista Graph (no tabla) para mostrar una instancia real conectada.
 - Interpretacion sugerida: el grafo evidencia traversal social y de consumo para recomendaciones.
 
 ## 3. Visualizacion adicional recomendada
